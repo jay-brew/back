@@ -37,7 +37,7 @@ public class UserController {
             // 요청을 이용해 저장할 유저 만들기
             UserEntity user = UserEntity.builder()
                     .username(userDTO.getUsername())
-                    .password(userDTO.getPassword())
+                    .password(passwordEncoder.encode(userDTO.getPassword()))
                     .build();
             // 서비스로 이용해 리포지터리에 유저 저장
             UserEntity registeredUser = userService.create(user);
